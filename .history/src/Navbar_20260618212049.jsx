@@ -24,7 +24,6 @@ const Navbar = () => {
             width="60"
             height="60"
             className="me-3"
-            style={{ objectFit: "contain" }}
           />
 
           <div>
