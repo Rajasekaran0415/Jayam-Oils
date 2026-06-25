@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+
 
 function Card(props) {
   const discountPercent = Math.round(
@@ -46,12 +46,17 @@ function Card(props) {
           </span>
         </h3>
 
-        <Link
-          to="/cart"
-          className="btn btn-success px-4 text-white text-decoration-none"
+        <button
+          onClick={() => props.addToCart({
+            image: props.image,
+            name: props.name,
+            litre: props.litre,
+            price: props.price,
+          })}
+          className="btn btn-success px-4"
         >
           Add To Cart
-        </Link>
+        </button>
       </div>
     </div>
   );

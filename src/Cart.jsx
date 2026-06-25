@@ -1,26 +1,6 @@
-import { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-function Cart() {
-
-  const [cartItems, setCartItems] = useState([
-    {
-      id: 1,
-      name: "Groundnut Oil",
-      litre: "5 Liter",
-      price: 1100,
-      quantity: 2,
-      image: "/groundnutoil.png",
-    },
-    {
-      id: 2,
-      name: "Coconut Oil",
-      litre: "1 Liter",
-      price: 300,
-      quantity: 1,
-      image: "/coconutoil.png",
-    },
-  ]);
+function Cart({ cartItems, setCartItems }) {
 
   // Increase Quantity
   const increaseQty = (id) => {
@@ -69,7 +49,13 @@ function Cart() {
 
         <div className="col-lg-8">
 
-          {cartItems.map((item) => (
+          {cartItems.length === 0 ? (
+            <div className="text-center py-5">
+              <h3 className="text-muted">Your cart is empty</h3>
+              <p>Browse our products and add items to your cart.</p>
+            </div>
+          ) : (
+            cartItems.map((item) => (
 
             <div
               key={item.id}
@@ -153,7 +139,8 @@ function Cart() {
 
             </div>
 
-          ))}
+          ))
+        )}
 
         </div>
 

@@ -15,6 +15,23 @@ import Whatsapp from "./Whatsapp";
 function App() {
 
   const [selectedOil, setSelectedOil] = useState("groundnut");
+  const [cartItems, setCartItems] = useState([]);
+
+  const addToCart = (product) => {
+    setCartItems((prev) => {
+      const exists = prev.find(
+        (item) => item.name === product.name && item.litre === product.litre
+      );
+      if (exists) {
+        return prev.map((item) =>
+          item.name === product.name && item.litre === product.litre
+            ? { ...item, quantity: item.quantity + 1 }
+            : item
+        );
+      }
+      return [...prev, { ...product, id: Date.now(), quantity: 1 }];
+    });
+  };
 
   const products = {
     groundnut: [
@@ -142,6 +159,7 @@ function App() {
                         litre={item.litre}
                         originalPrice={item.originalPrice}
                         price={item.price}
+                        addToCart={addToCart}
                       />
                     </div>
                   ))}
@@ -151,7 +169,7 @@ function App() {
             </>
           }
         />
-        <Route path="/cart" element={<Cart />} />
+        <Route path="/cart" element={<Cart cartItems={cartItems} setCartItems={setCartItems} />} />
         <Route path="/about" element={<About />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/contact" element={<Contact />} />

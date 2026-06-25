@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import {
   FaFacebookF,
   FaInstagram,
@@ -58,12 +59,11 @@ function Footer() {
 
             <ul className="list-unstyled mt-4">
 
-              <li className="mb-3">Home</li>
-              <li className="mb-3">Products</li>
-              <li className="mb-3">About Us</li>
-              <li className="mb-3">Blogs</li>
-              <li className="mb-3">Offers</li>
-              <li className="mb-3">Contact Us</li>
+              <li className="mb-3"><Link to="/" className="text-white text-decoration-none">Home</Link></li>
+              <li className="mb-3"><Link to="/" className="text-white text-decoration-none">Products</Link></li>
+              <li className="mb-3"><Link to="/about" className="text-white text-decoration-none">About Us</Link></li>
+              <li className="mb-3"><Link to="/blog" className="text-white text-decoration-none">Blogs</Link></li>
+             
 
             </ul>
 
@@ -89,14 +89,6 @@ function Footer() {
 
               <li className="mb-3">
                 Sesame Oil
-              </li>
-
-              <li className="mb-3">
-                Cold Pressed Oils
-              </li>
-
-              <li className="mb-3">
-                Oil Gift Packs
               </li>
 
             </ul>
