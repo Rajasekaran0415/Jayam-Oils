@@ -168,8 +168,7 @@ function App() {
               <Body />
               <Whatsapp />
             </>
-          }
-        />
+        
         <Route path="/cart" element={<Cart cartItems={cartItems} setCartItems={setCartItems} />} />
         <Route path="/about" element={<About />} />
         <Route path="/blog" element={<Blog />} />

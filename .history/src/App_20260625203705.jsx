@@ -109,7 +109,7 @@ function App() {
 
   return (
     <>
-      <Navbar cartCount={cartItems.length} />
+      <Navbar cart/>
       <Routes>
         <Route
           path="/"
@@ -166,7 +166,6 @@ function App() {
                 </div>
               </div>
               <Body />
-              <Whatsapp />
             </>
           }
         />
@@ -175,6 +174,7 @@ function App() {
         <Route path="/blog" element={<Blog />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
+      <Whatsapp />
       <Footer />
     </>
   );

@@ -60,7 +60,7 @@ function Footer() {
             <ul className="list-unstyled mt-4">
 
               <li className="mb-3"><Link to="/" className="text-white text-decoration-none">Home</Link></li>
-              <li className="mb-3"><Link to="/products" className="text-white text-decoration-none">Products</Link></li>
+              <li className="mb-3"><Link to="/product" className="text-white text-decoration-none">Products</Link></li>
               <li className="mb-3"><Link to="/about" className="text-white text-decoration-none">About Us</Link></li>
               <li className="mb-3"><Link to="/blog" className="text-white text-decoration-none">Blogs</Link></li>
              

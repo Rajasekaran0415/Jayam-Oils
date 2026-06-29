@@ -166,10 +166,11 @@ function App() {
                 </div>
               </div>
               <Body />
-              <Whatsapp />
+             
             </>
           }
         />
+         <Whatsapp />
         <Route path="/cart" element={<Cart cartItems={cartItems} setCartItems={setCartItems} />} />
         <Route path="/about" element={<About />} />
         <Route path="/blog" element={<Blog />} />

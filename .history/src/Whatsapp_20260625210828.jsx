@@ -19,7 +19,7 @@ function Whatsapp() {
           className="me-2"
         />
 
-        Need help
+        
 
       </a>
 
