@@ -85,7 +85,7 @@ const Navbar = ({ user }) => {
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link fw-semibold" to="/signup" onClick={() => setMenuOpen(false)}>
+              <NavLink className="nav-link fw-semibold" to="/contact" onClick={() => setMenuOpen(false)}>
                Sign Up
               </NavLink>
             </li>

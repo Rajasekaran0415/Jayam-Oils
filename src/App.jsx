@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Link } from "react-router-dom";
 import Navbar from "./Navbar";
 import Slider from "./Slider";
 import Card from "./Card";
@@ -8,11 +8,15 @@ import Cart from "./Cart";
 import About from "./About";
 import Blog from "./Blog";
 import Contact from "./Contact";
+import Login from "./Login";
+import Signup from "./Signup";
 import Footer from "./Footer";
 import Whatsapp from "./Whatsapp";
+import { useAuth } from "./AuthContext.jsx";
 
 
 function App() {
+  const { user } = useAuth();
 
   const [selectedOil, setSelectedOil] = useState("groundnut");
   const [cartItems, setCartItems] = useState([]);
@@ -46,14 +50,14 @@ function App() {
         image: "/groundnutoil.png",
         name: "Groundnut Oil",
         litre: "5 Liter Pure Oil",
-        originalPrice: 1300,
+        originalPrice: 1500,
         price: 1100,
       },
       {
         image: "/groundnutoil.png",
         name: "Groundnut Oil",
         litre: "10 Liter Pure Oil",
-        originalPrice: 2500,
+        originalPrice: 3000,
         price: 2100,
       },
     ],
@@ -70,14 +74,14 @@ function App() {
         image: "/coconutoil.png",
         name: "Coconut Oil",
         litre: "5 Liter Pure Oil",
-        originalPrice: 1600,
+        originalPrice: 1750,
         price: 1400,
       },
       {
         image: "/coconutoil.png",
         name: "Coconut Oil",
         litre: "10 Liter Pure Oil",
-        originalPrice: 3000,
+        originalPrice: 3500,
         price: 2600,
       },
     ],
@@ -94,14 +98,14 @@ function App() {
         image: "/sesameoil.png",
         name: "Sesame Oil",
         litre: "5 Liter Pure Oil",
-        originalPrice: 1750,
+        originalPrice: 1900,
         price: 1500,
       },
       {
         image: "/sesameoil.png",
         name: "Sesame Oil",
         litre: "10 Liter Pure Oil",
-        originalPrice: 3200,
+        originalPrice: 3800,
         price: 2800,
       },
     ],
@@ -109,7 +113,7 @@ function App() {
 
   return (
     <>
-      <Navbar cartCount={cartItems.length} />
+      <Navbar cartCount={cartItems.length} user={user} />
       <Routes>
         <Route
           path="/"
@@ -150,6 +154,14 @@ function App() {
                     Sesame Oil
                   </button>
                 </div>
+                {!user && (
+                  <div className="alert alert-warning d-flex align-items-center justify-content-between p-4 mb-4" role="alert">
+                    <div>
+                      <strong>🔒 Profile Required!</strong> Create a profile to unlock exclusive discounts on our products.
+                    </div>
+                    <Link to="/signup" className="btn btn-success btn-sm">Create Profile</Link>
+                  </div>
+                )}
                 <div className="row g-4">
                   {products[selectedOil].map((item, index) => (
                     <div key={index} className="col-lg-4 col-md-6">
@@ -160,6 +172,7 @@ function App() {
                         originalPrice={item.originalPrice}
                         price={item.price}
                         addToCart={addToCart}
+                        user={user}
                       />
                     </div>
                   ))}
@@ -174,6 +187,8 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
       </Routes>
       <Footer />
     </>

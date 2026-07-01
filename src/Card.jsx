@@ -1,4 +1,4 @@
-
+import { Link } from "react-router-dom";
 
 function Card(props) {
   const discountPercent = Math.round(
@@ -24,12 +24,22 @@ function Card(props) {
             padding: "15px",
           }}
         />
-        <span
-          className="badge bg-danger position-absolute"
-          style={{ top: "10px", right: "10px", fontSize: "0.9rem" }}
-        >
-          -{discountPercent}%
-        </span>
+        {props.user ? (
+          <span
+            className="badge bg-danger position-absolute"
+            style={{ top: "10px", right: "10px", fontSize: "0.9rem" }}
+          >
+            -{discountPercent}%
+          </span>
+        ) : (
+          <Link
+            to="/signup"
+            className="badge bg-success text-decoration-none position-absolute"
+            style={{ top: "10px", right: "10px", fontSize: "0.8rem" }}
+          >
+            Sign up & save {discountPercent}%
+          </Link>
+        )}
       </div>
 
       <div className="card-body text-center">
@@ -38,12 +48,14 @@ function Card(props) {
         <p className="text-muted">{props.litre}</p>
 
         <h3 className="text-success fw-bold">
-          ₹{props.price}
-          <span
-            className="text-muted text-decoration-line-through fs-6 fw-normal ms-2"
-          >
-            ₹{props.originalPrice}
-          </span>
+          ₹{props.user ? props.price : props.originalPrice}
+          {props.user && (
+            <span
+              className="text-muted text-decoration-line-through fs-6 fw-normal ms-2"
+            >
+              ₹{props.originalPrice}
+            </span>
+          )}
         </h3>
 
         <button
